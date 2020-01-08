@@ -10,9 +10,13 @@
 name: OpenWrt-CI
 
 on:
+  #schedule:
+  #  #  - cron: 0 20 * * *
   push:
     branches: 
       - master
+  #release:
+  #  #   types: [published]
 
 jobs:
   build:
@@ -60,12 +64,6 @@ jobs:
           git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
           git clone https://github.com/Ameykyl/luci-app-koolproxyR
           git clone https://github.com/rosywrt/luci-theme-rosy
-
-      - name: 同步最新的源码
-        run: |
-          git remote add openwrt https://github.com/coolsnowwolf/lede.git
-          git pull openwrt master
-          git remote -v
 
       - name: Update feeds
         run: |
